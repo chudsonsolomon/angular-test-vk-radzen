@@ -1,0 +1,194 @@
+{
+  "access": "Authenticated",
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "columns": 2,
+                  "data": "${employee}",
+                  "events": {
+                    "cancel": [
+                      {
+                        "type": "back"
+                      }
+                    ],
+                    "loadData": [],
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Employee",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "Northwind.updateEmployee",
+                        "parameters": [
+                          {
+                            "name": "EmployeeID",
+                            "value": "${parameters.EmployeeID}"
+                          },
+                          {
+                            "name": "Employee",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "property": "LastName",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "Last Name",
+                      "type": "string"
+                    },
+                    {
+                      "property": "FirstName",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "First Name",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Title",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Title",
+                      "type": "string"
+                    },
+                    {
+                      "property": "TitleOfCourtesy",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Title Of Courtesy",
+                      "type": "string"
+                    },
+                    {
+                      "property": "BirthDate",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Birth Date",
+                      "type": "date"
+                    },
+                    {
+                      "property": "HireDate",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Hire Date",
+                      "type": "date"
+                    },
+                    {
+                      "property": "Address",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Address",
+                      "type": "string"
+                    },
+                    {
+                      "property": "City",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "City",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Region",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Region",
+                      "type": "string"
+                    },
+                    {
+                      "property": "PostalCode",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Postal Code",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Country",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Country",
+                      "type": "string"
+                    },
+                    {
+                      "property": "HomePhone",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Home Phone",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Extension",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Extension",
+                      "type": "string"
+                    },
+                    {
+                      "property": "Notes",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Notes",
+                      "type": "text"
+                    },
+                    {
+                      "property": "Photo",
+                      "requiredText": "is required",
+                      "title": "Photo",
+                      "type": "file"
+                    }
+                  ],
+                  "name": "form0",
+                  "type": "form"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "Northwind.getEmployeeById",
+        "parameters": [
+          {
+            "name": "EmployeeID",
+            "value": "${parameters.EmployeeID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "employee",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Edit Employee"
+}

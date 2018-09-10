@@ -1,0 +1,43 @@
+<rz-content #content1 container="main">
+  <rz-heading #pageTitle size="H1" text="Employees">
+  </rz-heading>
+  <div class="row">
+    <div class="col-md-12">
+      <rz-grid #grid0 addText="Add" [allowAdd]="true" [allowDelete]="true" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [count]="getEmployeesCount" [data]="getEmployeesResult" emptyText="No records to display." (add)="grid0Add($event)" (delete)="grid0Delete($event)" (loadData)="grid0LoadData($event)" (rowSelect)="grid0RowSelect($event)">
+        <rz-grid-column [filterable]="false" format="base64" property="Photo" [sortable]="false" title="Photo" width="120px" type="string">
+          <ng-template let-data gridColumnTemplate>
+          <img width='100%' height='100%' src='{{data?.Photo}}' />
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column property="FirstName" title="First Name" type="string">
+        </rz-grid-column>
+        <rz-grid-column property="LastName" title="Last Name" type="string">
+        </rz-grid-column>
+        <rz-grid-column property="Title" title="Title" type="string">
+        </rz-grid-column>
+        <rz-grid-column property="TitleOfCourtesy" title="Title Of Courtesy" type="string">
+        </rz-grid-column>
+        <rz-grid-column format="date-time" property="BirthDate" title="Birth Date" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.BirthDate | utcDate}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column format="date-time" property="HireDate" title="Hire Date" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.HireDate | utcDate}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column property="City" title="City" type="string">
+        </rz-grid-column>
+        <rz-grid-column property="Country" title="Country" type="string">
+        </rz-grid-column>
+        <rz-grid-column [filterable]="false" [sortable]="false" width="140px">
+          <ng-template let-data gridColumnTemplate>
+            <rz-button #button0 text="Orders" (click)="button0Click($event, data)">
+            </rz-button>
+          </ng-template>
+        </rz-grid-column>
+      </rz-grid>
+    </div>
+  </div>
+</rz-content>
